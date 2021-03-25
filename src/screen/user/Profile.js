@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   ScrollView,
@@ -13,51 +13,45 @@ import { Input, Button, Text } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { fetchUserDetails, updateUserDetails } from '../../service/api/user/UserAuth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height - 65;
 
 export const Profile = ({ navigation }) => {
+  const [contact, setContact] = useState("");
 
   const [ShowContNet, setShowContNet] = useState(false)
   const [name, setName] = useState('');
-  const [fathername, setFathername] = useState('');
+
   const [email, setEmail] = useState('');
   const [mobile, setMobile] = useState('');
-  const [age, setAge] = useState('');
+
   const [address, setAddress] = useState('');
-  const [city, setCity] = useState('');
-  const [stat, setstat] = useState('');
+
 
 
   const [edit, setEdit] = useState(false);
   const [input_border, setInputBorder] = useState(0);
-  const [contact, setContact] = useState("9582345889");
-  const getCont = async () => {
-    try {
-      const cont = await AsyncStorage.getItem("contact");
-      //console.log(cont);
-      setContact(cont);
-    } catch (e) { console.log(e) }
-  }
-
   useEffect(() => {
-    getCont();
-    getData(contact);
+    getcontact()
 
-  }, [])
-  const getData = async (contact, signal) => {
-    let res = await fetchUserDetails(contact, { signal: signal });
+  }, []);
+  async function getcontact() {
+    const temp = await AsyncStorage.getItem('contact');
+    setContact(temp);
+  }
+  async function getData() {
+    let res = await fetchUserDetails(contact);
     //console.log(res);
     setName(res.user_firstname);
-    setFathername(res.user_fathername);
+
     setEmail(res.user_email);
     setMobile(res.user_contact);
-    setAge(res.user_age);
+
     setAddress(res.user_address);
-    setCity(res.city);
-    setstat(res.state);
+
+
 
   }
 
@@ -98,8 +92,7 @@ export const Profile = ({ navigation }) => {
   function UserUpdate() {
     //  console.log("update Initialised");
     //  console.log(name, fathername, email,age, address, city, stat)
-    var res = updateUserDetails(name, fathername, email, mobile,
-      age, address, city, stat);
+    var res = updateUserDetails(name, email, mobile, address);
     // console.log(res.data);
     if (res != 'error') {
 
@@ -125,7 +118,7 @@ export const Profile = ({ navigation }) => {
   return (
 
     <View style={styles.IndexView}>
-      <Image
+      <Image onLoad={getData}
         source={require('../../../asstes/images/topgearbg.jpg')}
         style={styles.backgroundImage}
       />
