@@ -11,7 +11,9 @@ import {
 } from 'react-native-confirmation-code-field';
 import { ImageBackground } from 'react-native';
 import { SendOTP, CheckOTP } from '../../service/api/user/UserAuth';
+import { KeyboardAvoidingView } from 'react-native';
 
+const keyboardVerticalOffset = Platform.OS === 'ios' ? 40 : -100
 
 
 const width = Dimensions.get('window').width;
@@ -48,65 +50,67 @@ export const SignIn = ({ navigation }) => {
   }
 
   return (
-    <View style={styles.IndexView}>
-      <ImageBackground source={require('../../../asstes/images/topgearbg.jpg')} style={styles.image}>
+    <KeyboardAvoidingView behavior='position' keyboardVerticalOffset={keyboardVerticalOffset}>
+      <View style={styles.IndexView}>
+        <ImageBackground source={require('../../../asstes/images/topgearbg.jpg')} style={styles.image}>
 
-        <View style={styles.View2}>
-          <View style={{ height: 50 }}></View>
-          <View style={{
-            borderColor: '#ac2c86',
-            borderWidth: 1,
-            borderRadius: 100,
-            height: 123,
-            width: 123,
-          }}>
-            <Image
-              source={require('../../../asstes/images/phone2.png')}
-              style={styles.LogoImage}
+          <View style={styles.View2}>
+            <View style={{ height: '3%' }}></View>
+            <View style={{
+              borderColor: '#ac2c86',
+              borderWidth: 1,
+              borderRadius: 100,
+              height: 123,
+              width: 123,
+            }}>
+              <Image
+                source={require('../../../asstes/images/phone2.png')}
+                style={styles.LogoImage}
+              />
+            </View>
+
+            <View style={{ height: '10%' }}></View>
+            <Text
+              style={{ fontSize: 25, textTransform: 'uppercase', color: 'white' }}>
+              Contact Number
+          </Text>
+            <View style={{ height: 20 }}></View>
+            <Text
+              style={{ fontSize: 15, textTransform: 'capitalize', color: 'white' }}>
+              You shall receive a SMS with Code for Verification.
+          </Text>
+            <View style={{ height: 50 }}></View>
+
+            <Input
+              value={contact}
+              ref={input}
+              onFocus={() => setContactFocus(true)}
+              inputContainerStyle={[
+                contactFocus ? styles.inputFocused : {},
+                contactErrStyle ? styles.inputErr : {},
+              ]}
+              onChangeText={(contact) => setContact(contact)}
+              maxLength={10}
+              style={{ color: 'white' }}
+              keyboardType={'number-pad'}
+              placeholder="Enter Contact Number"
+              leftIcon={<Icon name="mobile" size={30} color="#ac2c86" />}
+              errorStyle={{ color: 'red', textTransform: 'capitalize' }}
+              errorMessage={contactErr}
             />
+
+            <View style={{ height: '3%' }}></View>
+
+            <View style={styles.Next_button}>
+              <Button
+                onPress={SEND_OTP}
+                buttonStyle={[styles.ButtonStyle, styles.ButtonSignInStyle]}
+                title="GET OTP"></Button>
+            </View>
           </View>
-
-          <View style={{ height: '10%' }}></View>
-          <Text
-            style={{ fontSize: 25, textTransform: 'uppercase', color: 'white' }}>
-            Contact Number
-          </Text>
-          <View style={{ height: 20 }}></View>
-          <Text
-            style={{ fontSize: 15, textTransform: 'capitalize', color: 'white' }}>
-            You shall receive a SMS with Code for Verification.
-          </Text>
-          <View style={{ height: 50 }}></View>
-
-          <Input
-            value={contact}
-            ref={input}
-            onFocus={() => setContactFocus(true)}
-            inputContainerStyle={[
-              contactFocus ? styles.inputFocused : {},
-              contactErrStyle ? styles.inputErr : {},
-            ]}
-            onChangeText={(contact) => setContact(contact)}
-            maxLength={10}
-            style={{ color: 'white' }}
-            keyboardType={'number-pad'}
-            placeholder="Enter Contact Number"
-            leftIcon={<Icon name="mobile" size={30} color="#ac2c86" />}
-            errorStyle={{ color: 'red', textTransform: 'capitalize' }}
-            errorMessage={contactErr}
-          />
-
-          <View style={{ height: '3%' }}></View>
-
-          <View style={styles.Next_button}>
-            <Button
-              onPress={SEND_OTP}
-              buttonStyle={[styles.ButtonStyle, styles.ButtonSignInStyle]}
-              title="GET OTP"></Button>
-          </View>
-        </View>
-      </ImageBackground>
-    </View>
+        </ImageBackground>
+      </View>
+    </KeyboardAvoidingView>
   );
 };
 export const CheckOtp = ({ navigation }) => {
@@ -149,85 +153,86 @@ export const CheckOtp = ({ navigation }) => {
 
   }
   return (
-    <View style={styles.IndexView}>
-      <ImageBackground source={require('../../../asstes/images/topgearbg.jpg')} style={styles.image}>
+    <KeyboardAvoidingView behavior='position' keyboardVerticalOffset={keyboardVerticalOffset}>
+      <View style={styles.IndexView}>
+        <ImageBackground source={require('../../../asstes/images/topgearbg.jpg')} style={styles.image}>
 
 
 
 
-        <View style={styles.View2}>
-          <View style={{ height: 10 }}></View>
+          <View style={styles.View2}>
+            <View style={{ height: 10 }}></View>
 
-          <View style={{
-            height: 122,
-            width: 122,
-            borderColor: '#ac2c86',
-            borderWidth: 1,
-            borderRadius: 100,
-          }}>
-            <Image
-              source={require('../../../asstes/images/lock1.png')}
-              style={styles.LogoImage2}
+            <View style={{
+              height: 122,
+              width: 122,
+              borderColor: '#ac2c86',
+              borderWidth: 1,
+              borderRadius: 100,
+            }}>
+              <Image
+                source={require('../../../asstes/images/lock1.png')}
+                style={styles.LogoImage2}
+              />
+            </View>
+
+            <View style={{ height: '7%' }}></View>
+            <Text
+              style={{ fontSize: 25, textTransform: 'uppercase', color: 'white' }}>
+              Verification Code
+          </Text>
+            <View style={{ height: 20 }}></View>
+            <Text
+              style={{ fontSize: 15, textTransform: 'capitalize', color: 'white' }}>
+              enter otp sent to your number
+          </Text>
+            <View style={{ height: 50 }}></View>
+
+            <CodeField
+              ref={ref}
+              {...props}
+              value={value}
+              onChangeText={setValue}
+              cellCount={CELL_COUNT}
+              rootStyle={styles.codeFieldRoot}
+              keyboardType="number-pad"
+              //textContentType="oneTimeCode"
+              renderCell={({ index, symbol, isFocused }) => (
+                <Text
+                  key={index}
+                  style={[
+                    validOTP ? styles.cell : styles.cellErr,
+                    isFocused && styles.focusCell,
+                  ]}
+                  onLayout={getCellOnLayoutHandler(index)}>
+                  {symbol || (isFocused ? <Cursor /> : null)}
+                </Text>
+              )}
             />
+
+            <View style={{ height: '6%' }}></View>
+
+            <Text
+              style={[
+                InValidOTP ? styles.InValidOtpTrue : styles.InValidOtpFalse,
+              ]}>
+              Invalid otp
+          </Text>
+
+            <View style={styles.Next_button}>
+              <Button
+                onPress={CHECK_OTP}
+                buttonStyle={[styles.ButtonStyle, styles.ButtonSignInStyle]}
+                title="SUBMIT"></Button>
+            </View>
           </View>
 
-          <View style={{ height: '7%' }}></View>
-          <Text
-            style={{ fontSize: 25, textTransform: 'uppercase', color: 'white' }}>
-            Verification Code
-          </Text>
-          <View style={{ height: 20 }}></View>
-          <Text
-            style={{ fontSize: 15, textTransform: 'capitalize', color: 'white' }}>
-            enter otp sent to your number
-          </Text>
-          <View style={{ height: 50 }}></View>
-
-          <CodeField
-            ref={ref}
-            {...props}
-            value={value}
-            onChangeText={setValue}
-            cellCount={CELL_COUNT}
-            rootStyle={styles.codeFieldRoot}
-            keyboardType="number-pad"
-            //textContentType="oneTimeCode"
-            renderCell={({ index, symbol, isFocused }) => (
-              <Text
-                key={index}
-                style={[
-                  validOTP ? styles.cell : styles.cellErr,
-                  isFocused && styles.focusCell,
-                ]}
-                onLayout={getCellOnLayoutHandler(index)}>
-                {symbol || (isFocused ? <Cursor /> : null)}
-              </Text>
-            )}
-          />
-
-          <View style={{ height: '6%' }}></View>
-
-          <Text
-            style={[
-              InValidOTP ? styles.InValidOtpTrue : styles.InValidOtpFalse,
-            ]}>
-            Invalid otp
-          </Text>
-
-          <View style={styles.Next_button}>
-            <Button
-              onPress={CHECK_OTP}
-              buttonStyle={[styles.ButtonStyle, styles.ButtonSignInStyle]}
-              title="SUBMIT"></Button>
-          </View>
-        </View>
 
 
 
-
-      </ImageBackground>
-    </View>
-
+        </ImageBackground>
+      </View>
+    </KeyboardAvoidingView>
   );
 };
 

@@ -14,7 +14,7 @@ const Stack = createStackNavigator();
 export const AuthStackNavigation = () => {
   return (
     <NavigationContainer>
-      <StatusBar backgroundColor="#ac2c86" />
+      <StatusBar backgroundColor="#4a0072" />
       <Stack.Navigator initialRouteName="IndexPage">
         <Stack.Screen
           name="IndexPage"
@@ -30,7 +30,7 @@ export const AuthStackNavigation = () => {
           options={{
             title: 'SIGN IN',
             headerStyle: {
-              backgroundColor: '#ac2c86',
+              backgroundColor: '#7b1fa2',
               height: 40,
             },
             headerTintColor: 'white',
@@ -46,7 +46,7 @@ export const AuthStackNavigation = () => {
           options={{
             title: 'SIGN UP',
             headerStyle: {
-              backgroundColor: '#ac2c86',
+              backgroundColor: '#7b1fa2',
               height: 40,
             },
             headerTintColor: 'white',
@@ -63,7 +63,7 @@ export const AuthStackNavigation = () => {
             title: 'VERIFY OTP',
 
             headerStyle: {
-              backgroundColor: '#ac2c86',
+              backgroundColor: '#7b1fa2',
               height: 40,
             },
             headerTintColor: 'white',
@@ -80,7 +80,7 @@ export const AuthStackNavigation = () => {
             title: 'VERIFY OTP',
 
             headerStyle: {
-              backgroundColor: '#ac2c86',
+              backgroundColor: '#7b1fa2',
               height: 40,
             },
             headerTintColor: 'white',

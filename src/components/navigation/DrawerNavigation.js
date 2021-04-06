@@ -55,8 +55,8 @@ export const DrawerNavigation = () => {
           component={Home}
           options={{
             headerTitle: 'Home',
-            headerStyle: { height: 40, backgroundColor: '#ac2c86' },
-            headerTitleStyle: { fontSize: 15 },
+            headerStyle: { height: 40, backgroundColor: '#7b1fa2' },
+            headerTitleStyle: { fontSize: 15, color: 'white' },
 
             headerRight: () => (
               <TouchableOpacity>
@@ -87,9 +87,9 @@ export const DrawerNavigation = () => {
           name="SeatCover"
           component={SeatCover}
           options={{
-            headerTitle: 'SeatCover',
-            headerStyle: { height: 40, backgroundColor: '#ac2c86' },
-            headerTitleStyle: { fontSize: 15 },
+            headerTitle: 'Seat Cover',
+            headerStyle: { height: 40, backgroundColor: '#7b1fa2' },
+            headerTitleStyle: { fontSize: 15, color: 'white' },
             headerRight: () => (
               <TouchableOpacity>
                 <FontAwesome5
@@ -112,8 +112,8 @@ export const DrawerNavigation = () => {
           component={D4Mat}
           options={{
             headerTitle: '4D Mat',
-            headerStyle: { height: 40, backgroundColor: '#ac2c86' },
-            headerTitleStyle: { fontSize: 15 },
+            headerStyle: { height: 40, backgroundColor: '#7b1fa2' },
+            headerTitleStyle: { fontSize: 15, color: 'white' },
             headerRight: () => (
               <TouchableOpacity>
                 <FontAwesome5
@@ -136,8 +136,8 @@ export const DrawerNavigation = () => {
           component={Accessories}
           options={{
             headerTitle: 'Accessories',
-            headerStyle: { height: 40, backgroundColor: '#ac2c86' },
-            headerTitleStyle: { fontSize: 15 },
+            headerStyle: { height: 40, backgroundColor: '#7b1fa2' },
+            headerTitleStyle: { fontSize: 15, color: 'white' },
             headerRight: () => (
               <TouchableOpacity>
                 <FontAwesome5
@@ -163,8 +163,8 @@ export const DrawerNavigation = () => {
           component={Profile}
           options={{
             headerTitle: 'Profile',
-            headerStyle: { height: 40, backgroundColor: '#ac2c86' },
-            headerTitleStyle: { fontSize: 15 },
+            headerStyle: { height: 40, backgroundColor: '#7b1fa2' },
+            headerTitleStyle: { fontSize: 15, color: 'white' },
             headerRight: () => (
               <TouchableOpacity>
                 <FontAwesome5
@@ -204,7 +204,7 @@ export const DrawerNavigation = () => {
           paddingTop: 10,
           width: '100%',
           height: height - 30,
-          backgroundColor: '#e4dbe3'
+          backgroundColor: '#7b1fa2'
         }}>
         <View style={{ flexDirection: 'row', marginLeft: 10 }}>
           <View style={styles.ImageProfileView}>
@@ -214,12 +214,12 @@ export const DrawerNavigation = () => {
             />
           </View>
           <View style={{ marginLeft: 10, marginTop: 20 }}>
-            <Text style={{ textTransform: 'capitalize', fontSize: 15, fontWeight: 'bold' }}>
+            <Text style={{ textTransform: 'capitalize', fontSize: 15, fontWeight: 'bold', color: 'white' }}>
               {name}
             </Text>
             <Text
               numberOfLines={1}
-              style={{ textTransform: 'capitalize', fontSize: 12, width: 200 }}>
+              style={{ textTransform: 'capitalize', fontSize: 12, width: 200, color: 'white' }}>
               {email}
             </Text>
           </View>
@@ -320,10 +320,10 @@ export const DrawerNavigation = () => {
                   signOut();
                 }}>
                 <ListItem.Content>
-                  <ListItem.Title style={[styles.ListItems, { color: 'gray' }]}>
+                  <ListItem.Title style={[styles.ListItems, { color: 'white' }]}>
                     <FontAwesome5
                       name="sign-out-alt"
-                      style={[styles.MenuIcon, { color: '#ac2c86' }]}
+                      style={[styles.MenuIcon, { color: 'white' }]}
                     />{' '}
                     Sign Out
                   </ListItem.Title>
@@ -339,7 +339,7 @@ export const DrawerNavigation = () => {
 
   return (
     <NavigationContainer>
-      <StatusBar backgroundColor="#ac2c86" />
+      <StatusBar backgroundColor="#4a0072" />
 
       <Drawer.Navigator
         drawerStyle={{ width: '75%' }}
@@ -391,7 +391,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   ListItemLogoutContainer: {
-    backgroundColor: '#7d1552',
+    backgroundColor: '#7b1fa2',
     padding: 10,
 
   },

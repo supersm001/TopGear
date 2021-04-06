@@ -109,7 +109,7 @@ export const CustomHeader = () => {
 
     if (loginState.isLoading) {
         return (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#17344B' }} >
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#7b1fa2' }} >
                 {/* <ActivityIndicator size='large' color='white' /> */}
                 <Image source={require("../../../asstes/images/splash.png")} style={{ height: '100%', width: '100%' }} />
             </View>

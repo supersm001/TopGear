@@ -15,27 +15,27 @@ export const IndexPage = ({ navigation }) => {
 
                 <View style={styles.View2}>
 
-                    <View style={{ height: 30 }} />
+                    <View style={{ height: '3%' }} />
 
                     <View style={styles.LogoView}>
                         <Image source={require('../../../asstes/images/top_gear.png')} style={styles.LogoImage} />
                     </View>
 
-                    <View style={{ height: 40 }} />
+                    <View style={{ height: '6%' }} />
                     <Text style={{ fontSize: 20, color: 'white' }}>Welcome To</Text>
-                    <View style={{ height: 30 }} />
+                    <View style={{ height: '5%' }} />
                     <Text style={{ fontSize: 28, color: 'white', textAlign: "center" }}>TOP GEAR ONLINE SERVICES PVT. LTD.</Text>
 
-                    <View style={{ height: '20%' }} />
+                    <View style={{ height: '10%' }} />
 
                     <View style={styles.ButtonDiv}>
                         {/* <Button buttonStyle={[styles.ButtonStyle, styles.ButtonSignUpStyle]} title='SIGN UP ' iconRight icon={<Icon name="arrow-right"  size={15} color="white"/>}></Button> */}
                         <Button onPress={() => navigation.navigate("SignUp")} buttonStyle={[styles.ButtonStyle, styles.ButtonSignUpStyle]} title='SIGN UP '></Button>
-                        <View style={{ height: 20 }} />
+                        <View style={{ height: '5%' }} />
                         <Button onPress={() => navigation.navigate("SignIn")} buttonStyle={[styles.ButtonStyle, styles.ButtonSignInStyle]} title='SIGN IN '></Button>
                     </View>
 
-                    <View style={{ height: 20 }} />
+                    <View style={{ height: '2%' }} />
                     <Text style={{ fontSize: 15, color: 'white' }}> Copyright &copy; 2021-2022. All Rights Reserved </Text>
 
                 </View>
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     View2: {
         flex: 1,
         padding: 20,
-        // justifyContent: 'center',
+        justifyContent: 'center',
         alignItems: 'center',
         position: 'absolute',
         backgroundColor: '#0000008f',
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     },
 
     ButtonSignInStyle: {
-        backgroundColor: '#ac2c86',
+        backgroundColor: '#7b1fa2',
     },
 
     ButtonSignUpStyle: {
