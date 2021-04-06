@@ -257,7 +257,7 @@ export const DrawerNavigation = () => {
                 }}>
                 <ListItem.Content>
                   <ListItem.Title style={styles.ListItems}>
-                    <FontAwesome5 name="scroll" style={styles.MenuIcon} />{' '}
+                    <FontAwesome5 name="couch" style={styles.MenuIcon} />{' '}
                      Seat Cover
                   </ListItem.Title>
                 </ListItem.Content>
@@ -272,7 +272,7 @@ export const DrawerNavigation = () => {
                 }}>
                 <ListItem.Content>
                   <ListItem.Title style={styles.ListItems}>
-                    <FontAwesome5 name="layer-group" style={styles.MenuIcon} />{' '}
+                    <FontAwesome5 name="chess-board" style={styles.MenuIcon} />{' '}
                     4D Mat
                   </ListItem.Title>
                 </ListItem.Content>
@@ -286,7 +286,7 @@ export const DrawerNavigation = () => {
                 }}>
                 <ListItem.Content>
                   <ListItem.Title style={styles.ListItems}>
-                    <FontAwesome5 name="box-open" style={styles.MenuIcon} />{' '}
+                    <FontAwesome5 name="braille" style={styles.MenuIcon} />{' '}
                     Accessories
                   </ListItem.Title>
                 </ListItem.Content>
@@ -360,7 +360,7 @@ export const DrawerNavigation = () => {
 const styles = StyleSheet.create({
   HeaderBars: {
     color: 'white',
-    fontSize: 30,
+    fontSize: 25,
     marginRight: 10,
   },
   ListItems: {
@@ -386,11 +386,11 @@ const styles = StyleSheet.create({
   },
   ListItemContainer: {
     padding: 12,
-    borderColor: 'gray',
-    borderWidth: 2,
+    borderColor: 'lightgray',
+    borderWidth: 1,
   },
   ListItemLogoutContainer: {
-    backgroundColor: 'gray',
+    backgroundColor: 'rgba(100,100,100,0.5)',
     padding: 10,
 
   },
