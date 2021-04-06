@@ -94,7 +94,7 @@ export const SignUp = ({ navigation }) => {
                     maxLength={30}
                     style={{ color: 'white' }}
                     placeholder="Enter Full Name"
-                    leftIcon={<Icon name="user" size={20} color="#ac2c86" />}
+                    leftIcon={<Icon name="user" size={20} color="#7b1fa2" />}
                 />
 
                 <Input
@@ -109,7 +109,7 @@ export const SignUp = ({ navigation }) => {
                     maxLength={30}
                     style={{ color: 'white' }}
                     placeholder="Enter Email"
-                    leftIcon={<Icon type='FontAwesome' name="envelope" size={20} color="#ac2c86" />}
+                    leftIcon={<Icon type='FontAwesome' name="envelope" size={20} color="#7b1fa2" />}
                 />
 
                 <Input
@@ -124,7 +124,7 @@ export const SignUp = ({ navigation }) => {
                     maxLength={30}
                     style={{ color: 'white' }}
                     placeholder="Enter Address"
-                    leftIcon={<Icon type='FontAwesome' name="globe" size={20} color="#ac2c86" />}
+                    leftIcon={<Icon type='FontAwesome' name="globe" size={20} color="#7b1fa2" />}
                 />
 
 
@@ -142,7 +142,7 @@ export const SignUp = ({ navigation }) => {
                     style={{ color: 'white' }}
                     keyboardType={'number-pad'}
                     placeholder="Enter Contact Number"
-                    leftIcon={<Icon name="mobile" size={30} color="#ac2c86" />}
+                    leftIcon={<Icon name="mobile" size={30} color="#7b1fa2" />}
                     errorStyle={{ color: 'red', textTransform: 'capitalize' }}
                     errorMessage={contactErr}
                 />

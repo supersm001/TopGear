@@ -370,7 +370,7 @@ const styles = StyleSheet.create({
     textTransform: 'capitalize',
   },
   MenuIcon: {
-    color: '#ac2c86',
+    color: '#7b1fa2',
     fontSize: 14,
   },
   ImageProfileView: {
