@@ -1,8 +1,10 @@
 import React from 'react';
 import { StyleSheet, View, Image, Dimensions } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
 import { Button, Text } from 'react-native-elements';
 import { ImageBackground } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
@@ -15,27 +17,39 @@ export const IndexPage = ({ navigation }) => {
 
                 <View style={styles.View2}>
 
-                    <View style={{ height: '3%' }} />
+
 
                     <View style={styles.LogoView}>
                         <Image source={require('../../../asstes/images/top_gear.png')} style={styles.LogoImage} />
                     </View>
 
-                    <View style={{ height: '6%' }} />
+
                     <Text style={{ fontSize: 20, color: 'white' }}>Welcome To</Text>
-                    <View style={{ height: '5%' }} />
+
                     <Text style={{ fontSize: 28, color: 'white', textAlign: "center" }}>TOP GEAR ONLINE SERVICES PVT. LTD.</Text>
 
-                    <View style={{ height: '10%' }} />
 
-                    <View style={styles.ButtonDiv}>
-                        {/* <Button buttonStyle={[styles.ButtonStyle, styles.ButtonSignUpStyle]} title='SIGN UP ' iconRight icon={<Icon name="arrow-right"  size={15} color="white"/>}></Button> */}
-                        <Button onPress={() => navigation.navigate("SignUp")} buttonStyle={[styles.ButtonStyle, styles.ButtonSignUpStyle]} title='SIGN UP '></Button>
-                        <View style={{ height: '5%' }} />
-                        <Button onPress={() => navigation.navigate("SignIn")} buttonStyle={[styles.ButtonStyle, styles.ButtonSignInStyle]} title='SIGN IN '></Button>
+                    <View style={{ width: '100%', height: 90, alignItems: 'center', justifyContent: 'space-between' }}>
+                        <TouchableOpacity style={styles.ButtonStyle} onPress={() => navigation.navigate("SignUp")}>
+                            <LinearGradient colors={['#ae52d4', '#7b1fa2', '#4a0072']}
+                                style={styles.linearGradient}
+                                start={{ y: 0.0, x: 0.0 }} end={{ y: 0.0, x: 1.5 }}>
+                                <Text style={{ color: 'white' }}>
+                                    SIGN UP
+                           </Text>
+                            </LinearGradient>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity style={styles.ButtonStyle} onPress={() => navigation.navigate("SignIn")}>
+                            <LinearGradient colors={['#ae52d4', '#7b1fa2', '#4a0072']}
+                                style={styles.linearGradient}
+                                start={{ y: 0.0, x: 0.0 }} end={{ y: 0.0, x: 1.5 }}>
+                                <Text style={{ color: 'white' }}>
+                                    SIGN IN
+                           </Text>
+                            </LinearGradient>
+                        </TouchableOpacity>
                     </View>
-
-                    <View style={{ height: '2%' }} />
                     <Text style={{ fontSize: 15, color: 'white' }}> Copyright &copy; 2021-2022. All Rights Reserved </Text>
 
                 </View>
@@ -75,7 +89,7 @@ const styles = StyleSheet.create({
     View2: {
         flex: 1,
         padding: 20,
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems: 'center',
         position: 'absolute',
         backgroundColor: '#0000008f',
@@ -91,28 +105,21 @@ const styles = StyleSheet.create({
         width: '350%',
     },
 
-    ButtonDiv: {
-        padding: 20,
 
-    },
 
     ButtonStyle: {
-        backgroundColor: '#2288dc',
-        borderRadius: 100,
-        paddingLeft: 50,
-        paddingRight: 50,
-        padding: 10,
-        justifyContent: 'space-between',
-        textTransform: 'uppercase',
-        borderWidth: 1,
+        height: 40,
+        width: '50%',
+        borderRadius: 50,
+        borderColor: 'white',
+        //  borderWidth: 1,
     },
 
-    ButtonSignInStyle: {
-        backgroundColor: '#7b1fa2',
+    linearGradient: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 50,
     },
-
-    ButtonSignUpStyle: {
-        backgroundColor: '#ac2c86',
-    }
 
 })

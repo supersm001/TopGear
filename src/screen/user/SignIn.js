@@ -3,6 +3,7 @@ import { StyleSheet, View, Image, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input, Button, Text } from 'react-native-elements';
 import { Authcontext } from '../../components/navigation/context';
+import LinearGradient from 'react-native-linear-gradient';
 import {
   CodeField,
   Cursor,
@@ -11,7 +12,7 @@ import {
 } from 'react-native-confirmation-code-field';
 import { ImageBackground } from 'react-native';
 import { SendOTP, CheckOTP } from '../../service/api/user/UserAuth';
-import { KeyboardAvoidingView } from 'react-native';
+import { KeyboardAvoidingView, TouchableOpacity } from 'react-native';
 
 const keyboardVerticalOffset = Platform.OS === 'ios' ? 40 : -100
 
@@ -94,19 +95,27 @@ export const SignIn = ({ navigation }) => {
               style={{ color: 'white' }}
               keyboardType={'number-pad'}
               placeholder="Enter Contact Number"
-              leftIcon={<Icon name="mobile" size={30} color="#ac2c86" />}
+              leftIcon={<Icon name="mobile" size={30} color="#7b1fa2" />}
               errorStyle={{ color: 'red', textTransform: 'capitalize' }}
               errorMessage={contactErr}
             />
 
             <View style={{ height: '3%' }}></View>
-
-            <View style={styles.Next_button}>
+            <TouchableOpacity style={styles.ButtonStyle} onPress={SEND_OTP}>
+              <LinearGradient colors={['#ae52d4', '#7b1fa2', '#4a0072']}
+                style={styles.linearGradient}
+                start={{ y: 0.0, x: 0.0 }} end={{ y: 0.0, x: 1.5 }}>
+                <Text style={{ color: 'white' }}>
+                  SIGN IN
+                           </Text>
+              </LinearGradient>
+            </TouchableOpacity>
+            {/* <View style={styles.Next_button}>
               <Button
                 onPress={SEND_OTP}
                 buttonStyle={[styles.ButtonStyle, styles.ButtonSignInStyle]}
                 title="GET OTP"></Button>
-            </View>
+            </View> */}
           </View>
         </ImageBackground>
       </View>
@@ -218,13 +227,21 @@ export const CheckOtp = ({ navigation }) => {
               ]}>
               Invalid otp
           </Text>
-
-            <View style={styles.Next_button}>
+            <TouchableOpacity style={styles.ButtonStyle} onPress={CHECK_OTP}>
+              <LinearGradient colors={['#ae52d4', '#7b1fa2', '#4a0072']}
+                style={styles.linearGradient}
+                start={{ y: 0.0, x: 0.0 }} end={{ y: 0.0, x: 1.5 }}>
+                <Text style={{ color: 'white' }}>
+                  SIGN IN
+                           </Text>
+              </LinearGradient>
+            </TouchableOpacity>
+            {/* <View style={styles.Next_button}>
               <Button
                 onPress={CHECK_OTP}
                 buttonStyle={[styles.ButtonStyle, styles.ButtonSignInStyle]}
                 title="SUBMIT"></Button>
-            </View>
+            </View> */}
           </View>
 
 
@@ -252,13 +269,10 @@ const styles = StyleSheet.create({
     height: height,
   },
 
-  Next_button: {
-    padding: 20,
-    marginTop: 20,
-  },
+
 
   inputFocused: {
-    borderBottomColor: '#ac2c86',
+    borderBottomColor: '#7b1fa2',
     borderBottomWidth: 2,
   },
 
@@ -297,19 +311,9 @@ const styles = StyleSheet.create({
     height: '100%',
   },
 
-  ButtonStyle: {
-    backgroundColor: '#2288dc',
-    borderRadius: 100,
-    paddingLeft: 50,
-    paddingRight: 50,
-    padding: 10,
-    justifyContent: 'space-between',
-    textTransform: 'uppercase',
-  },
 
-  ButtonSignInStyle: {
-    backgroundColor: '#ac2c86',
-  },
+
+
 
   codeFieldRoot: { marginTop: 20 },
   cell: {
@@ -337,7 +341,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   focusCell: {
-    borderBottomColor: '#ac2c86',
+    borderBottomColor: '#7b1fa2',
     height: 60,
     width: 60,
   },
@@ -348,5 +352,19 @@ const styles = StyleSheet.create({
     display: 'flex',
     color: 'red',
     textTransform: 'uppercase',
-  }
+  },
+  ButtonStyle: {
+    height: 40,
+    width: '50%',
+    borderRadius: 50,
+    borderColor: 'white',
+    //  borderWidth: 1,
+  },
+
+  linearGradient: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 50,
+  },
 });

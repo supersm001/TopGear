@@ -185,15 +185,13 @@ export const DrawerNavigation = () => {
 
   const CustomDrawerNavigator = (props) => {
     const [name, setName] = useState('Name');
-    const [email, setEmail] = useState('Email');
+
     async function getdata() {
       try {
         const Name = await AsyncStorage.getItem('name');
         //   console.log(Name);
         setName(Name);
-        const Email = await AsyncStorage.getItem('email');
-        // console.log(Email)
-        setEmail(Email);
+
 
       } catch (e) { console.log(e) }
     }
@@ -217,10 +215,11 @@ export const DrawerNavigation = () => {
             <Text style={{ textTransform: 'capitalize', fontSize: 15, fontWeight: 'bold', color: 'white' }}>
               {name}
             </Text>
+
             <Text
               numberOfLines={1}
-              style={{ textTransform: 'capitalize', fontSize: 12, width: 200, color: 'white' }}>
-              {email}
+              style={{ textTransform: 'capitalize', fontSize: 15, width: 200, color: 'white', fontWeight: 'bold' }}>
+              ₹ 250
             </Text>
           </View>
         </View>
@@ -328,7 +327,7 @@ export const DrawerNavigation = () => {
                     Sign Out
                   </ListItem.Title>
                 </ListItem.Content>
-                <ListItem.Chevron iconStyle={{ color: '#ac2c86' }} />
+                <ListItem.Chevron iconStyle={{ color: 'white' }} />
               </ListItem>
             </View>
           </ScrollView>
@@ -360,7 +359,7 @@ export const DrawerNavigation = () => {
 
 const styles = StyleSheet.create({
   HeaderBars: {
-    color: '#e4dbe3',
+    color: 'white',
     fontSize: 30,
     marginRight: 10,
   },
@@ -370,7 +369,7 @@ const styles = StyleSheet.create({
     textTransform: 'capitalize',
   },
   MenuIcon: {
-    color: '#7b1fa2',
+    color: '#af8eb5',
     fontSize: 14,
   },
   ImageProfileView: {
@@ -387,11 +386,11 @@ const styles = StyleSheet.create({
   },
   ListItemContainer: {
     padding: 12,
-    borderBottomColor: '#be5fa3',
-    borderBottomWidth: 1,
+    borderColor: 'gray',
+    borderWidth: 2,
   },
   ListItemLogoutContainer: {
-    backgroundColor: '#7b1fa2',
+    backgroundColor: 'gray',
     padding: 10,
 
   },
