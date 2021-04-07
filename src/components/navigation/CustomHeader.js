@@ -6,6 +6,7 @@ import { AuthStackNavigation } from '../navigation/StackNavigation';
 import { Authcontext } from '../navigation/context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { SendOTP, CheckOTP } from '../../service/api/user/UserAuth';
+import { StatusBar } from 'react-native';
 
 export const CustomHeader = () => {
 
@@ -111,6 +112,7 @@ export const CustomHeader = () => {
         return (
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#7b1fa2' }} >
                 {/* <ActivityIndicator size='large' color='white' /> */}
+                <StatusBar hidden={true} />
                 <Image source={require("../../../asstes/images/splash.png")} style={{ height: '100%', width: '100%' }} />
             </View>
         )
