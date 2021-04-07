@@ -33,7 +33,7 @@ import { Profile } from '../../screen/user/Profile';
 import { Authcontext } from '../../components/navigation/context';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import Collapsible from 'react-native-collapsible';
 
 
 
@@ -185,6 +185,38 @@ export const DrawerNavigation = () => {
 
   const CustomDrawerNavigator = (props) => {
     const [name, setName] = useState('Name');
+    const [isSeatCoverCollapsed, setIsSeatCoverCollapsed] = useState(true);
+    const [is4dmatCollapsed, setIs4dmatCollapsed] = useState(true);
+    const [isAccessoriesCollapsed, setIsAccessoriesCollapsed] = useState(true);
+    const [isOrdersCollapsed, setIsOrdersCollapsed] = useState(true);
+    const toggelSetCover = () => {
+      if (isSeatCoverCollapsed)
+        setIsSeatCoverCollapsed(false);
+      else
+        setIsSeatCoverCollapsed(true);
+
+    }
+    const toggel4dmat = () => {
+      if (is4dmatCollapsed)
+        setIs4dmatCollapsed(false);
+      else
+        setIs4dmatCollapsed(true);
+
+    }
+    const toggelAccessories = () => {
+      if (isAccessoriesCollapsed)
+        setIsAccessoriesCollapsed(false);
+      else
+        setIsAccessoriesCollapsed(true);
+
+    }
+    const toggelOrders = () => {
+      if (isOrdersCollapsed)
+        setIsOrdersCollapsed(false);
+      else
+        setIsOrdersCollapsed(true);
+
+    }
 
     async function getdata() {
       try {
@@ -253,7 +285,8 @@ export const DrawerNavigation = () => {
               <ListItem
                 containerStyle={styles.ListItemContainer}
                 onPress={() => {
-                  props.navigation.navigate('SeatCover');
+                  // props.navigation.navigate('SeatCover');
+                  toggelSetCover();
                 }}>
                 <ListItem.Content>
                   <ListItem.Title style={styles.ListItems}>
@@ -265,10 +298,46 @@ export const DrawerNavigation = () => {
               </ListItem>
 
 
+              <Collapsible collapsed={isSeatCoverCollapsed}>
+
+                <ListItem
+                  containerStyle={styles.SubListItemContainer}
+                  onPress={() => {
+                    setIsSeatCoverCollapsed(true);
+                    props.navigation.navigate('SeatCover');
+                  }}>
+                  <ListItem.Content>
+                    <ListItem.Title style={styles.SubListItems}>
+                      <FontAwesome5 name="box" style={styles.MenuIcon} />{' '}
+                    Order
+                  </ListItem.Title>
+                  </ListItem.Content>
+                  <ListItem.Chevron />
+                </ListItem>
+                <ListItem
+                  containerStyle={styles.SubListItemContainer}
+                  onPress={() => {
+                    setIsSeatCoverCollapsed(true);
+                    props.navigation.navigate('SeatCover');
+                  }}>
+                  <ListItem.Content>
+                    <ListItem.Title style={styles.SubListItems}>
+                      <FontAwesome5 name="boxes" style={styles.MenuIcon} />{' '}
+                     Bulk Order
+                  </ListItem.Title>
+                  </ListItem.Content>
+                  <ListItem.Chevron />
+                </ListItem>
+
+
+              </Collapsible>
+
+
               <ListItem
                 containerStyle={styles.ListItemContainer}
                 onPress={() => {
-                  props.navigation.navigate('4DMat');
+                  // props.navigation.navigate('4DMat');
+                  toggel4dmat();
                 }}>
                 <ListItem.Content>
                   <ListItem.Title style={styles.ListItems}>
@@ -279,10 +348,44 @@ export const DrawerNavigation = () => {
                 <ListItem.Chevron />
               </ListItem>
 
+              <Collapsible collapsed={is4dmatCollapsed}>
+
+                <ListItem
+                  containerStyle={styles.SubListItemContainer}
+                  onPress={() => {
+                    setIs4dmatCollapsed(true);
+                    props.navigation.navigate('4DMat');
+                  }}>
+                  <ListItem.Content>
+                    <ListItem.Title style={styles.SubListItems}>
+                      <FontAwesome5 name="box" style={styles.MenuIcon} />{' '}
+                    Order
+                  </ListItem.Title>
+                  </ListItem.Content>
+                  <ListItem.Chevron />
+                </ListItem>
+                <ListItem
+                  containerStyle={styles.SubListItemContainer}
+                  onPress={() => {
+                    setIs4dmatCollapsed(true);
+                    props.navigation.navigate('4DMat');
+                  }}>
+                  <ListItem.Content>
+                    <ListItem.Title style={styles.SubListItems}>
+                      <FontAwesome5 name="boxes" style={styles.MenuIcon} />{' '}
+                     Bulk Order
+                  </ListItem.Title>
+                  </ListItem.Content>
+                  <ListItem.Chevron />
+                </ListItem>
+
+
+              </Collapsible>
               <ListItem
                 containerStyle={styles.ListItemContainer}
                 onPress={() => {
-                  props.navigation.navigate('Accessories');
+                  // props.navigation.navigate('Accessories');
+                  toggelAccessories();
                 }}>
                 <ListItem.Content>
                   <ListItem.Title style={styles.ListItems}>
@@ -292,8 +395,88 @@ export const DrawerNavigation = () => {
                 </ListItem.Content>
                 <ListItem.Chevron />
               </ListItem>
+              <Collapsible collapsed={isAccessoriesCollapsed}>
+
+                <ListItem
+                  containerStyle={styles.SubListItemContainer}
+                  onPress={() => {
+                    setIsAccessoriesCollapsed(true);
+                    props.navigation.navigate('Accessories');
+                  }}>
+                  <ListItem.Content>
+                    <ListItem.Title style={styles.SubListItems}>
+                      <FontAwesome5 name="box" style={styles.MenuIcon} />{' '}
+                        Order
+                      </ListItem.Title>
+                  </ListItem.Content>
+                  <ListItem.Chevron />
+                </ListItem>
+
+              </Collapsible>
+
+              <ListItem
+                containerStyle={styles.ListItemContainer}
+                onPress={() => {
+                  // props.navigation.navigate('SeatCover');
+                  toggelOrders();
+                }}>
+                <ListItem.Content>
+                  <ListItem.Title style={styles.ListItems}>
+                    <FontAwesome5 name="shopping-cart" style={styles.MenuIcon} />{' '}
+                     Orders
+                  </ListItem.Title>
+                </ListItem.Content>
+                <ListItem.Chevron />
+              </ListItem>
 
 
+              <Collapsible collapsed={isOrdersCollapsed}>
+
+                <ListItem
+                  containerStyle={styles.SubListItemContainer}
+                  onPress={() => {
+                    setIsOrdersCollapsed(true);
+                    props.navigation.navigate('SeatCover');
+                  }}>
+                  <ListItem.Content>
+                    <ListItem.Title style={styles.SubListItems}>
+                      <FontAwesome5 name="couch" style={styles.MenuIcon} />{' '}
+                    Seat Covers
+                  </ListItem.Title>
+                  </ListItem.Content>
+                  <ListItem.Chevron />
+                </ListItem>
+                <ListItem
+                  containerStyle={styles.SubListItemContainer}
+                  onPress={() => {
+                    setIsOrdersCollapsed(true);
+                    props.navigation.navigate('SeatCover');
+                  }}>
+                  <ListItem.Content>
+                    <ListItem.Title style={styles.SubListItems}>
+                      <FontAwesome5 name="chess-board" style={styles.MenuIcon} />{' '}
+                     4D Mats
+                  </ListItem.Title>
+                  </ListItem.Content>
+                  <ListItem.Chevron />
+                </ListItem>
+                <ListItem
+                  containerStyle={styles.SubListItemContainer}
+                  onPress={() => {
+                    setIsOrdersCollapsed(true);
+                    props.navigation.navigate('SeatCover');
+                  }}>
+                  <ListItem.Content>
+                    <ListItem.Title style={styles.SubListItems}>
+                      <FontAwesome5 name="braille" style={styles.MenuIcon} />{' '}
+                      Accessories
+                  </ListItem.Title>
+                  </ListItem.Content>
+                  <ListItem.Chevron />
+                </ListItem>
+
+
+              </Collapsible>
               <ListItem
                 containerStyle={styles.ListItemContainer}
                 onPress={() => {
@@ -368,6 +551,12 @@ const styles = StyleSheet.create({
     color: 'gray',
     textTransform: 'capitalize',
   },
+  SubListItems: {
+    fontSize: 15,
+    color: 'gray',
+    textTransform: 'capitalize',
+    marginLeft: 20
+  },
   MenuIcon: {
     color: '#af8eb5',
     fontSize: 14,
@@ -388,6 +577,12 @@ const styles = StyleSheet.create({
     padding: 12,
     borderColor: 'lightgray',
     borderWidth: 1,
+  },
+  SubListItemContainer: {
+    padding: 12,
+    borderColor: 'lightgray',
+    borderWidth: 1,
+    backgroundColor: '#f3e5f5'
   },
   ListItemLogoutContainer: {
     backgroundColor: 'rgba(100,100,100,0.5)',
