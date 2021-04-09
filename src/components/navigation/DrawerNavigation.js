@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {
   StyleSheet,
   ScrollView,
@@ -7,25 +7,25 @@ import {
   Dimensions,
   StatusBar,
 } from 'react-native';
-import {Text, ListItem} from 'react-native-elements';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import { Text, ListItem } from 'react-native-elements';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
-import {Home} from '../../screen/user/Home';
-import {SeatCoverOrder} from '../../screen/user/SeatCoverOrder';
-import {SeatCoverBulkOrder} from '../../screen/user/SeatCoverBulkOrder';
-import {D4MatOrder} from '../../screen/user/4DMatOrder';
-import {D4MatBulkOrder} from '../../screen/user/4DMatBulkOrder';
-import {AccessoriesOrder} from '../../screen/user/AccessoriesOrder';
-import {OrdersSeatCover} from '../../screen/user/OrdersSeatCover';
-import {Orders4DMat} from '../../screen/user/Orders4DMat';
-import {OrdersAccessories} from '../../screen/user/OrdersAccessories';
+import { Home } from '../../screen/user/Home';
+import { SeatCoverOrder } from '../../screen/user/SeatCoverOrder';
+import { SeatCoverBulkOrder } from '../../screen/user/SeatCoverBulkOrder';
+import { D4MatOrder } from '../../screen/user/4DMatOrder';
+import { D4MatBulkOrder } from '../../screen/user/4DMatBulkOrder';
+import { AccessoriesOrder } from '../../screen/user/AccessoriesOrder';
+import { OrdersSeatCover } from '../../screen/user/OrdersSeatCover';
+import { Orders4DMat } from '../../screen/user/Orders4DMat';
+import { OrdersAccessories } from '../../screen/user/OrdersAccessories';
 
-import {Profile} from '../../screen/user/Profile';
-import {Authcontext} from '../../components/navigation/context';
+import { Profile } from '../../screen/user/Profile';
+import { Authcontext } from '../../components/navigation/context';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Collapsible from 'react-native-collapsible';
@@ -36,7 +36,7 @@ const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
 export const DrawerNavigation = () => {
-  const {signOut} = useContext(Authcontext);
+  const { signOut } = useContext(Authcontext);
 
   const HomeScreen = props => {
     return (
@@ -46,8 +46,8 @@ export const DrawerNavigation = () => {
           component={Home}
           options={{
             headerTitle: 'Home',
-            headerStyle: {height: 40, backgroundColor: '#7b1fa2'},
-            headerTitleStyle: {fontSize: 15, color: 'white'},
+            headerStyle: { height: 40, backgroundColor: '#7b1fa2' },
+            headerTitleStyle: { fontSize: 15, color: 'white' },
 
             headerRight: () => (
               <TouchableOpacity>
@@ -72,8 +72,8 @@ export const DrawerNavigation = () => {
           component={SeatCoverOrder}
           options={{
             headerTitle: 'Seat Cover Order',
-            headerStyle: {height: 40, backgroundColor: '#7b1fa2'},
-            headerTitleStyle: {fontSize: 15, color: 'white'},
+            headerStyle: { height: 40, backgroundColor: '#7b1fa2' },
+            headerTitleStyle: { fontSize: 15, color: 'white' },
             headerRight: () => (
               <TouchableOpacity>
                 <FontAwesome5
@@ -97,8 +97,8 @@ export const DrawerNavigation = () => {
           component={SeatCoverBulkOrder}
           options={{
             headerTitle: 'Seat Cover Bulk Order',
-            headerStyle: {height: 40, backgroundColor: '#7b1fa2'},
-            headerTitleStyle: {fontSize: 15, color: 'white'},
+            headerStyle: { height: 40, backgroundColor: '#7b1fa2' },
+            headerTitleStyle: { fontSize: 15, color: 'white' },
             headerRight: () => (
               <TouchableOpacity>
                 <FontAwesome5
@@ -122,8 +122,8 @@ export const DrawerNavigation = () => {
           component={D4MatOrder}
           options={{
             headerTitle: '4D Mat Order',
-            headerStyle: {height: 40, backgroundColor: '#7b1fa2'},
-            headerTitleStyle: {fontSize: 15, color: 'white'},
+            headerStyle: { height: 40, backgroundColor: '#7b1fa2' },
+            headerTitleStyle: { fontSize: 15, color: 'white' },
             headerRight: () => (
               <TouchableOpacity>
                 <FontAwesome5
@@ -147,8 +147,8 @@ export const DrawerNavigation = () => {
           component={D4MatBulkOrder}
           options={{
             headerTitle: '4D Mat Bulk Order',
-            headerStyle: {height: 40, backgroundColor: '#7b1fa2'},
-            headerTitleStyle: {fontSize: 15, color: 'white'},
+            headerStyle: { height: 40, backgroundColor: '#7b1fa2' },
+            headerTitleStyle: { fontSize: 15, color: 'white' },
             headerRight: () => (
               <TouchableOpacity>
                 <FontAwesome5
@@ -172,8 +172,8 @@ export const DrawerNavigation = () => {
           component={AccessoriesOrder}
           options={{
             headerTitle: 'Accessories Order',
-            headerStyle: {height: 40, backgroundColor: '#7b1fa2'},
-            headerTitleStyle: {fontSize: 15, color: 'white'},
+            headerStyle: { height: 40, backgroundColor: '#7b1fa2' },
+            headerTitleStyle: { fontSize: 15, color: 'white' },
             headerRight: () => (
               <TouchableOpacity>
                 <FontAwesome5
@@ -197,8 +197,8 @@ export const DrawerNavigation = () => {
           component={OrdersSeatCover}
           options={{
             headerTitle: 'View Seat Cover Orders',
-            headerStyle: {height: 40, backgroundColor: '#7b1fa2'},
-            headerTitleStyle: {fontSize: 15, color: 'white'},
+            headerStyle: { height: 40, backgroundColor: '#7b1fa2' },
+            headerTitleStyle: { fontSize: 15, color: 'white' },
             headerRight: () => (
               <TouchableOpacity>
                 <FontAwesome5
@@ -222,8 +222,8 @@ export const DrawerNavigation = () => {
           component={Orders4DMat}
           options={{
             headerTitle: 'View 4D Mat Orders',
-            headerStyle: {height: 40, backgroundColor: '#7b1fa2'},
-            headerTitleStyle: {fontSize: 15, color: 'white'},
+            headerStyle: { height: 40, backgroundColor: '#7b1fa2' },
+            headerTitleStyle: { fontSize: 15, color: 'white' },
             headerRight: () => (
               <TouchableOpacity>
                 <FontAwesome5
@@ -247,8 +247,8 @@ export const DrawerNavigation = () => {
           component={OrdersAccessories}
           options={{
             headerTitle: 'View Accessories Orders',
-            headerStyle: {height: 40, backgroundColor: '#7b1fa2'},
-            headerTitleStyle: {fontSize: 15, color: 'white'},
+            headerStyle: { height: 40, backgroundColor: '#7b1fa2' },
+            headerTitleStyle: { fontSize: 15, color: 'white' },
             headerRight: () => (
               <TouchableOpacity>
                 <FontAwesome5
@@ -272,8 +272,8 @@ export const DrawerNavigation = () => {
           component={Profile}
           options={{
             headerTitle: 'Profile',
-            headerStyle: {height: 40, backgroundColor: '#7b1fa2'},
-            headerTitleStyle: {fontSize: 15, color: 'white'},
+            headerStyle: { height: 40, backgroundColor: '#7b1fa2' },
+            headerTitleStyle: { fontSize: 15, color: 'white' },
             headerRight: () => (
               <TouchableOpacity>
                 <FontAwesome5
@@ -311,7 +311,13 @@ export const DrawerNavigation = () => {
       if (isOrdersCollapsed) setIsOrdersCollapsed(false);
       else setIsOrdersCollapsed(true);
     };
+    useEffect(() => {
 
+      getdata();
+
+
+
+    }, [props])
     async function getdata() {
       try {
         const Name = await AsyncStorage.getItem('name');
@@ -321,7 +327,7 @@ export const DrawerNavigation = () => {
         console.log(e);
       }
     }
-    getdata();
+
     return (
       <View
         style={{
@@ -330,14 +336,14 @@ export const DrawerNavigation = () => {
           height: height - 30,
           backgroundColor: '#7b1fa2',
         }}>
-        <View style={{flexDirection: 'row', marginLeft: 10}}>
+        <View style={{ flexDirection: 'row', marginLeft: 10 }}>
           <View style={styles.ImageProfileView}>
             <Image
               source={require('../../../asstes/images/userLogo.png')}
               style={styles.UserProfileImage}
             />
           </View>
-          <View style={{marginLeft: 10, marginTop: 20}}>
+          <View style={{ marginLeft: 10, marginTop: 20 }}>
             <Text
               style={{
                 textTransform: 'capitalize',
@@ -595,15 +601,15 @@ export const DrawerNavigation = () => {
                   signOut();
                 }}>
                 <ListItem.Content>
-                  <ListItem.Title style={[styles.ListItems, {color: 'white'}]}>
+                  <ListItem.Title style={[styles.ListItems, { color: 'white' }]}>
                     <FontAwesome5
                       name="sign-out-alt"
-                      style={[styles.MenuIcon, {color: 'white'}]}
+                      style={[styles.MenuIcon, { color: 'white' }]}
                     />{' '}
                     Sign Out
                   </ListItem.Title>
                 </ListItem.Content>
-                <ListItem.Chevron iconStyle={{color: 'white'}} />
+                <ListItem.Chevron iconStyle={{ color: 'white' }} />
               </ListItem>
             </View>
           </ScrollView>
@@ -617,7 +623,7 @@ export const DrawerNavigation = () => {
       <StatusBar backgroundColor="#4a0072" />
 
       <Drawer.Navigator
-        drawerStyle={{width: '75%'}}
+        drawerStyle={{ width: '75%' }}
         drawerContent={props => <CustomDrawerNavigator {...props} />}
         edgeWidth={30}>
         <Drawer.Screen name="Home" component={HomeScreen} />
