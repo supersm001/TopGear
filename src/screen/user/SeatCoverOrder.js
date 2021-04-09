@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, Dimensions, FlatList, Image } from 'react-native';
 
 import { Text } from 'react-native-elements';
@@ -11,27 +11,33 @@ import { ScrollView } from 'react-native';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height - 65;
 const Stack = createStackNavigator();
+var brand = '';
+var model = '';
+var series = '';
+var letherite = '';
+var items = '';
+var armrest = '';
+const data = [
+  { name: 'Aston Martin', address: require('../../../asstes/brands/astonmartin.png') },
+  { name: 'Audi', address: require('../../../asstes/brands/audi.png') },
+  { name: 'BMW', address: require('../../../asstes/brands/bmw.png') },
+  { name: 'Bugatti', address: require('../../../asstes/brands/bugatti.png') },
+  { name: 'Dacia', address: require('../../../asstes/brands/dacia.png') },
+  { name: 'Ferrari', address: require('../../../asstes/brands/ferrari.png') },
+  { name: 'Ford', address: require('../../../asstes/brands/ford.png') },
+  { name: 'Jaguar', address: require('../../../asstes/brands/jaguar.png') },
+  { name: 'Lamborgini', address: require('../../../asstes/brands/lamborgini.png') },
+  { name: 'Land Rover', address: require('../../../asstes/brands/landrover.png') },
+  { name: 'Mercedes', address: require('../../../asstes/brands/mercedes.png') },
+  { name: 'Mini Cooper', address: require('../../../asstes/brands/mini.png') },
+  { name: 'Porsche', address: require('../../../asstes/brands/porsche.png') },
+  { name: 'Rolls Royce', address: require('../../../asstes/brands/rollsroyce.png') },
+  { name: 'Skoda', address: require('../../../asstes/brands/skoda.png') },
+  { name: 'Volks Wagon', address: require('../../../asstes/brands/volkswagon.png') }
 
+];
 const SelectBrand = ({ navigation }) => {
-  const data = [
-    { name: 'Aston Martin', address: require('../../../asstes/brands/astonmartin.png') },
-    { name: 'Audi', address: require('../../../asstes/brands/audi.png') },
-    { name: 'BMW', address: require('../../../asstes/brands/bmw.png') },
-    { name: 'Bugatti', address: require('../../../asstes/brands/bugatti.png') },
-    { name: 'Dacia', address: require('../../../asstes/brands/dacia.png') },
-    { name: 'Ferrari', address: require('../../../asstes/brands/ferrari.png') },
-    { name: 'Ford', address: require('../../../asstes/brands/ford.png') },
-    { name: 'Jaguar', address: require('../../../asstes/brands/jaguar.png') },
-    { name: 'Lamborgini', address: require('../../../asstes/brands/lamborgini.png') },
-    { name: 'Land Rover', address: require('../../../asstes/brands/landrover.png') },
-    { name: 'Mercedes', address: require('../../../asstes/brands/mercedes.png') },
-    { name: 'Mini Cooper', address: require('../../../asstes/brands/mini.png') },
-    { name: 'Porsche', address: require('../../../asstes/brands/porsche.png') },
-    { name: 'Rolls Royce', address: require('../../../asstes/brands/rollsroyce.png') },
-    { name: 'Skoda', address: require('../../../asstes/brands/skoda.png') },
-    { name: 'Volks Wagon', address: require('../../../asstes/brands/volkswagon.png') }
 
-  ];
 
   return (
     <View style={styles.IndexView}>
@@ -50,7 +56,7 @@ const SelectBrand = ({ navigation }) => {
             renderItem={({ item }) => {
 
               return (
-                <TouchableOpacity style={styles.InnerElements} >
+                <TouchableOpacity style={styles.InnerElements} onPress={() => { navigation.navigate('Select Model'); brand = item.name; }}>
 
                   <Image source={item.address} style={styles.apLogo} />
                   <Text>{item.name}</Text>
@@ -69,6 +75,7 @@ const SelectBrand = ({ navigation }) => {
 };
 
 const SelectModel = ({ navigation }) => {
+
   return (
     <View style={styles.IndexView}>
       <ImageBackground
@@ -76,9 +83,25 @@ const SelectModel = ({ navigation }) => {
         style={styles.image}>
         <View style={styles.Area}>
           <Text style={styles.textStyle}>
-            Select Model Page
-  </Text>
-          <TouchableOpacity style={styles.ButtonStyle} onPress={() => navigation.navigate('Select Series')}>
+            Select Model
+          </Text>
+          <FlatList
+            data={data}
+            renderItem={({ item }) => {
+
+              return (
+                <TouchableOpacity style={styles.InnerElements} onPress={() => { navigation.navigate('Select Series'); model = item.name; }}>
+
+                  <Image source={item.address} style={styles.apLogo} />
+                  <Text>{item.name}</Text>
+                </TouchableOpacity>
+              )
+            }
+            }
+            numColumns={2}
+            keyExtractor={(item, index) => index.toString()}
+          />
+          {/* <TouchableOpacity style={styles.ButtonStyle} onPress={() => navigation.navigate('Select Series')}>
             <LinearGradient colors={['#ae52d4', '#7b1fa2', '#4a0072']}
               style={styles.linearGradient}
               start={{ y: 0.0, x: 0.0 }} end={{ y: 0.0, x: 1.5 }}>
@@ -86,7 +109,7 @@ const SelectModel = ({ navigation }) => {
                 GO
                            </Text>
             </LinearGradient>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       </ImageBackground>
     </View>
@@ -102,8 +125,24 @@ const SelectSeries = ({ navigation }) => {
         <View style={styles.Area}>
           <Text style={styles.textStyle}>
             Select Series Page
-  </Text>
-          <TouchableOpacity style={styles.ButtonStyle} onPress={() => navigation.navigate('Select Letherite')}>
+          </Text>
+          <FlatList
+            data={data}
+            renderItem={({ item }) => {
+
+              return (
+                <TouchableOpacity style={styles.InnerElements} onPress={() => { navigation.navigate('Select Letherite'); series = item.name; }}>
+
+                  <Image source={item.address} style={styles.apLogo} />
+                  <Text>{item.name}</Text>
+                </TouchableOpacity>
+              )
+            }
+            }
+            numColumns={2}
+            keyExtractor={(item, index) => index.toString()}
+          />
+          {/* <TouchableOpacity style={styles.ButtonStyle} onPress={() => navigation.navigate('Select Letherite')}>
             <LinearGradient colors={['#ae52d4', '#7b1fa2', '#4a0072']}
               style={styles.linearGradient}
               start={{ y: 0.0, x: 0.0 }} end={{ y: 0.0, x: 1.5 }}>
@@ -111,7 +150,7 @@ const SelectSeries = ({ navigation }) => {
                 GO
                            </Text>
             </LinearGradient>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       </ImageBackground>
     </View>
@@ -127,8 +166,24 @@ const SelectLetherite = ({ navigation }) => {
         <View style={styles.Area}>
           <Text style={styles.textStyle}>
             Select Letherite Page
-  </Text>
-          <TouchableOpacity style={styles.ButtonStyle} onPress={() => navigation.navigate('Select Items')}>
+          </Text>
+          <FlatList
+            data={data}
+            renderItem={({ item }) => {
+
+              return (
+                <TouchableOpacity style={styles.InnerElements} onPress={() => { navigation.navigate('Select Items'); letherite = item.name; }}>
+
+                  <Image source={item.address} style={styles.apLogo} />
+                  <Text>{item.name}</Text>
+                </TouchableOpacity>
+              )
+            }
+            }
+            numColumns={2}
+            keyExtractor={(item, index) => index.toString()}
+          />
+          {/* <TouchableOpacity style={styles.ButtonStyle} onPress={() => navigation.navigate('Select Items')}>
             <LinearGradient colors={['#ae52d4', '#7b1fa2', '#4a0072']}
               style={styles.linearGradient}
               start={{ y: 0.0, x: 0.0 }} end={{ y: 0.0, x: 1.5 }}>
@@ -136,7 +191,7 @@ const SelectLetherite = ({ navigation }) => {
                 GO
                            </Text>
             </LinearGradient>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       </ImageBackground>
     </View>
@@ -153,7 +208,23 @@ const SelectItems = ({ navigation }) => {
           <Text style={styles.textStyle}>
             Select Items Page
           </Text>
-          <TouchableOpacity style={styles.ButtonStyle} onPress={() => navigation.navigate('Select Armrest')}>
+          <FlatList
+            data={data}
+            renderItem={({ item }) => {
+
+              return (
+                <TouchableOpacity style={styles.InnerElements} onPress={() => { navigation.navigate('Select Armrest'); items = item.name; }}>
+
+                  <Image source={item.address} style={styles.apLogo} />
+                  <Text>{item.name}</Text>
+                </TouchableOpacity>
+              )
+            }
+            }
+            numColumns={2}
+            keyExtractor={(item, index) => index.toString()}
+          />
+          {/* <TouchableOpacity style={styles.ButtonStyle} onPress={() => navigation.navigate('Select Armrest')}>
             <LinearGradient colors={['#ae52d4', '#7b1fa2', '#4a0072']}
               style={styles.linearGradient}
               start={{ y: 0.0, x: 0.0 }} end={{ y: 0.0, x: 1.5 }}>
@@ -161,7 +232,7 @@ const SelectItems = ({ navigation }) => {
                 GO
                            </Text>
             </LinearGradient>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       </ImageBackground>
     </View>
@@ -177,14 +248,33 @@ const SelectArmrest = ({ navigation }) => {
         <View style={styles.Area}>
           <Text style={styles.textStyle}>
             Select Armrest Page
-  </Text>
-          <TouchableOpacity style={styles.ButtonStyle} onPress={() => navigation.navigate('Select Brand')}>
+           </Text>
+          <FlatList
+            data={data}
+            renderItem={({ item }) => {
+
+              return (
+                <TouchableOpacity style={styles.InnerElements} onPress={() => {
+                  //navigation.navigate('Select Model'); 
+                  armrest = item.name;
+                }}>
+
+                  <Image source={item.address} style={styles.apLogo} />
+                  <Text>{item.name}</Text>
+                </TouchableOpacity>
+              )
+            }
+            }
+            numColumns={2}
+            keyExtractor={(item, index) => index.toString()}
+          />
+          <TouchableOpacity style={styles.ButtonStyle} onPress={() => { alert('Brand:' + brand + '\n Model:' + model + '\n Series:' + series + '\n Letherite:' + letherite + '\n Items:' + items + '\n Armrest:' + armrest) }}>
             <LinearGradient colors={['#ae52d4', '#7b1fa2', '#4a0072']}
               style={styles.linearGradient}
               start={{ y: 0.0, x: 0.0 }} end={{ y: 0.0, x: 1.5 }}>
               <Text style={{ color: 'white' }}>
                 GO
-                           </Text>
+              </Text>
             </LinearGradient>
           </TouchableOpacity>
         </View>
@@ -196,6 +286,7 @@ const SelectArmrest = ({ navigation }) => {
 
 
 export const SeatCoverOrder = ({ navigation }) => {
+
   return (
     <View style={styles.IndexView}>
       <ImageBackground
@@ -258,6 +349,7 @@ const styles = StyleSheet.create({
     width: '50%',
     borderRadius: 50,
     borderColor: 'white',
+    marginVertical: 10
     //  borderWidth: 1,
   },
   InnerElements: {
